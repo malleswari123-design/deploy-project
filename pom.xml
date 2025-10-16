@@ -38,7 +38,7 @@
       <muleVersion>4.9.0</muleVersion>
       <username>malleswari-ibm</username>
       <password>Malli@123</password>
-      <applicationName>cloudhub-app-cicd</applicationName>
+      <applicationName>jenkin-deploy1</applicationName>
       <replicas>1</replicas>
       <vCores>0.1</vCores>
     </cloudhub2Deployment>
