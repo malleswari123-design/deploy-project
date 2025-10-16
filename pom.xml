@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- 🔹 Use your Business Group ID as groupId -->
-    <groupId>06bca8d8-8e34-4ff3-bcc6-4dbef8db7e9b</groupId>
+    <groupId>6f19716d-473c-48fd-89de-4345eb04c512</groupId>
     <artifactId>jenkin-deploy</artifactId>
     <version>1.0.0</version>
     <packaging>mule-application</packaging>
