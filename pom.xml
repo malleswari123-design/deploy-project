@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 🔹 Use your Business Group ID as groupId -->
+    <groupId>06bca8d8-8e34-4ff3-bcc6-4dbef8db7e9b</groupId>
+    <artifactId>jenkin-deploy</artifactId>
+    <version>1.0.0</version>
+    <packaging>mule-application</packaging>
+
+    <name>jenkin-deploy1</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- Mule runtime and plugin versions -->
+        <mule.runtime.version>4.9.9</mule.runtime.version>
+        <mule.maven.plugin.version>4.4.0</mule.maven.plugin.version>
+
+        <!-- CloudHub 2.0 configuration -->
+        <anypoint.env>Sandbox</anypoint.env>
+        <anypoint.region>us-east-2</anypoint.region>
+        <app.runtime>${mule.runtime.version}</app.runtime>
+    </properties>
+
+    <build>
+        <plugins>
+
+            <!-- Clean build plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+
+            <!-- ✅ Mule Maven Plugin for CloudHub 2.0 -->
+            <plugin>
+                <groupId>org.mule.tools.maven</groupId>
+                <artifactId>mule-maven-plugin</artifactId>
+                <version>${mule.maven.plugin.version}</version>
+                <extensions>true</extensions>
+
+                <configuration>
+                    <deploymentType>cloudHub2</deploymentType>
+                    <uri>https://anypoint.mulesoft.com</uri>
+                    <applicationName>${project.artifactId}</applicationName>
+                    <username>${anypoint.username}</username>
+                    <password>${anypoint.password}</password>
+                    <environment>${anypoint.env}</environment>
+                    <region>${anypoint.region}</region>
+                    <replicas>1</replicas>
+                    <runtimeVersion>${app.runtime}</runtimeVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- ✅ Dependencies -->
+    <dependencies>
+        <dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-http-connector</artifactId>
+            <version>1.10.5</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.connectors</groupId>
+            <artifactId>mule-sockets-connector</artifactId>
+            <version>1.2.6</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.modules</groupId>
+            <artifactId>mule-apikit-module</artifactId>
+            <version>1.11.7</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+    </dependencies>
+
+    <!-- ✅ Correct repositories for Mule Maven Plugin -->
+    <repositories>
+        <repository>
+            <id>mule-releases</id>
+            <name>MuleSoft Releases Repository</name>
+            <url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
+        </repository>
+        <repository>
+            <id>mule-snapshots</id>
+            <name>MuleSoft Snapshots Repository</name>
+            <url>https://repository.mulesoft.org/nexus-ee/content/repositories/snapshots-ee/</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mule-releases</id>
+            <name>MuleSoft Plugin Releases</name>
+            <url>https://repository.mulesoft.org/nexus-ee/content/repositories/releases-ee/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
