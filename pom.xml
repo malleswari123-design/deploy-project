@@ -46,7 +46,7 @@
                 <extensions>true</extensions>
 
                 <configuration>
-                    <deploymentType>cloudHub2</deploymentType>
+                    <deploymentType>cloudHub</deploymentType>
                     <uri>https://anypoint.mulesoft.com</uri>
                     <applicationName>${project.artifactId}</applicationName>
                     <username>${anypoint.username}</username>
